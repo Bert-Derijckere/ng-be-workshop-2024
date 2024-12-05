@@ -4,8 +4,8 @@
   "projectType": "application",
   "prefix": "movies",
   "sourceRoot": "apps/movies-app/src",
-  "implicitDependencies": ["shared-ui-theme"],
   "tags": ["scope:movies", "type:app"],
+  "implicitDependencies": ["shared-ui-theme"],
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
@@ -96,6 +96,13 @@
       "options": {
         "buildTarget": "movies-app:build",
         "staticFilePath": "dist/apps/movies-app/browser"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "surge dist/apps/movies-app/browser plant-achieve-bert.surge.sh --token 86ff61279af346c2dbfa2e84927d7240"
       }
     }
   }
