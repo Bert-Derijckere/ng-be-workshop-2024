@@ -12,10 +12,9 @@ export async function utilLibGenerator(
   tree: Tree,
   options: UtilLibGeneratorSchema
 ) {
-  const projectRoot = `libs/${options.name}`;
   options.name = 'util-' + options.name;
   await libraryGenerator(tree, {
-    directory: options.name,
+    directory: path.join('libs', options.directory, options.name),
   });
 
   /*const projectRoot = `libs/${options.name}`;

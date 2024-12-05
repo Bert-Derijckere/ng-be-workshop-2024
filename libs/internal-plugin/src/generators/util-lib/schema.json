@@ -12,7 +12,20 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": {
+        "message":"What directory would you like to use?",
+        "type": "list",
+        "items": ["movies", "api", "shared"]
+      }
     }
   },
-  "required": ["name"]
+  "required": ["name", "directory"]
 }
