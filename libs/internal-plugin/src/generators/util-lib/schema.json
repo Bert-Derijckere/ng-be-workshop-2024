@@ -21,9 +21,9 @@
         "index": 1
       },
       "x-prompt": {
-        "message":"What directory would you like to use?",
+        "message": "What directory would you like to use?",
         "type": "list",
-        "items": ["movies", "api", "shared"]
+        "items": ["api", "movies", "shared"]
       }
     }
   },
