@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "fly-deploy": {
+      "implementation": "./src/executor/executor",
+      "schema": "./src/executor/schema.json",
+      "description": "fly-deploy executor"
+    }
+  }
+}
