@@ -133,19 +133,27 @@ If you run `nx build movies-api` and navigate to `cd dist/apps/movies-api && nod
 
 ### 7. Include external dependencies in build
 
-Let's fix the above - In `project.json`, under the **production** build options for the API (`targets -> build -> configurations -> production`)
-add this as an option:
+Let's fix the above - In `project.json`, we need to add **production** build options for the API (`targets -> build -> configurations -> production`). Our `build` is inferred from `@nx/webpack` plugin so that entire section is missing:
 
-```json
-"externalDependencies": [
-    "@nestjs/microservices",
-    "@nestjs/microservices/microservices-module",
-    "@nestjs/websockets/socket-module",
-    "class-transformer",
-    "class-validator",
-    "cache-manager",
-    "cache-manager/package.json"
-],
+```jsonc
+"targets": {
+  // ...
+  "build": {
+    "configurations": {
+      "production": {
+        "externalDependencies": [
+          "@nestjs/microservices",
+          "@nestjs/microservices/microservices-module",
+          "@nestjs/websockets/socket-module",
+          "class-transformer",
+          "class-validator",
+          "cache-manager",
+          "cache-manager/package.json"
+        ],
+      }
+    }
+  }
+}
 ```
 
 <details>
@@ -176,8 +184,9 @@ flyctl launch --now --name=<name of your app> --yes --copy-config --region=lax
 ```
 
 This will detect our NestJS project and configure Fly.io. It will genetate following files:
+
 - `fly.toml` where our Fly.io configuration is set
-- `Dockerfile` with our Docker image specs and 
+- `Dockerfile` with our Docker image specs and
 - `.dockerignore` with standard docker ignore config.
 
 Fly.io will also create the application and deploy it. If you go to `https://<your-app-name>.fly.dev` you will see your API running.
@@ -195,7 +204,7 @@ This will generate your unique auth token. Copy the output, including the FlyV1 
 FLY_API_TOKEN="<your-fly-token>"
 ```
 
-As we want those three files above to be copied rather than re-generated every time, add the following to our `project.json` in `movies-api`  (`targets -> build -> configurations -> production`):
+As we want those three files above to be copied rather than re-generated every time, add the following to our `project.json` in `movies-api` (`targets -> build -> configurations -> production`):
 
 ```json
 "assets": [
@@ -222,7 +231,7 @@ The executor should have options for:
 When running, your executor should perform the following tasks, using the `fly` CLI:
 
 - list the current fly apps: `fly apps list`
-- if the app doesn't exist, launch it: `fly launch --now --name=<the name of your Fly App> --region=lax --yes`
+- if the app doesn't exist, launch it: `fly launch --now --name=<the name of your Fly App> --region=lax --copy-config --yes`
 - if the app exists, deploy it again: `fly deploy`
 
 Fly launch and deploy commands need to be run in the `dist` location of your app.
