@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "start-all": "nx run-many -t serve"
+    "start-all": "nx run-many -t serve",
+    "lint-all": "nx run-many -t lint"
   },
   "private": true,
   "dependencies": {
