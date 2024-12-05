@@ -13,8 +13,10 @@ export async function utilLibGenerator(
   options: UtilLibGeneratorSchema
 ) {
   options.name = 'util-' + options.name;
+
   await libraryGenerator(tree, {
     directory: path.join('libs', options.directory, options.name),
+    tags: `scope:${options.directory}, type:util`
   });
 
   /*const projectRoot = `libs/${options.name}`;
