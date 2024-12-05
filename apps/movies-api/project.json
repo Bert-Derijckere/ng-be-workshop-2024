@@ -49,6 +49,15 @@
       "options": {
         "jestConfig": "apps/movies-api/jest.config.ts"
       }
+    },
+    "deploy": {
+      "executor": "@nx-workshop/internal-plugin:fly-deploy",
+      "outputs": [],
+      "options": {
+        "distPath": "dist/apps/movies-api",
+        "name": "movies-api-spring-dust-9025"
+      },
+      "dependsOn": [{ "target": "build", "projects": "self", "params": "forward" }]
     }
   }
 }

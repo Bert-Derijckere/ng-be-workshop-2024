@@ -4,7 +4,9 @@ import { FlyDeployExecutorSchema } from './schema';
 const runExecutor: PromiseExecutor<FlyDeployExecutorSchema> = async (
   options
 ) => {
-  console.log('Executor ran for FlyDeploy', options);
+  console.log(
+    `Running FlyDeploy for app ${options.name} from dist folder ${options.distPath}`
+  );
   return {
     success: true,
   };

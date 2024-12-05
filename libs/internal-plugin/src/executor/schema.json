@@ -4,6 +4,28 @@
   "title": "FlyDeploy executor",
   "description": "",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "distPath": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": {
+        "message": "What is the path to the dist folder you want to deploy?",
+        "type": "string"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the nameof the app you want to deploy?"
+    }
+  },
+  "required": ["distPath", "name"]
 }
