@@ -102,7 +102,14 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "surge dist/apps/movies-app/browser plant-achieve-bert.surge.sh --token 86ff61279af346c2dbfa2e84927d7240"
+        "command": "surge dist/apps/movies-app/browser ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+      }
+    },
+    "deploy-from-windows": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "surge dist/apps/movies-app/browser %SURGE_DOMAIN% --token %SURGE_TOKEN%"
       }
     }
   }
