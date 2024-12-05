@@ -100,6 +100,7 @@
     },
     "deploy": {
       "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "outputs": [],
       "options": {
         "command": "surge dist/apps/movies-app/browser ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
@@ -107,6 +108,7 @@
     },
     "deploy-from-windows": {
       "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "outputs": [],
       "options": {
         "command": "surge dist/apps/movies-app/browser %SURGE_DOMAIN% --token %SURGE_TOKEN%"
