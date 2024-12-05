@@ -23,7 +23,7 @@
       "x-prompt": {
         "message": "What directory would you like to use?",
         "type": "list",
-        "items": ["api", "movies", "shared"]
+        "items": ["api", "movies", "shared", "video-games"]
       }
     }
   },
