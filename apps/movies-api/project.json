@@ -8,6 +8,12 @@
     "build": {
       "configurations": {
         "production": {
+          "assets": [
+            "apps/movies-api/src/assets",
+            "apps/movies-api/src/fly.toml",
+            "apps/movies-api/src/Dockerfile",
+            "apps/movies-api/src/.dockerignore"
+          ],
           "externalDependencies": [
             "@nestjs/microservices",
             "@nestjs/microservices/microservices-module",
@@ -22,7 +28,7 @@
     },
     "serve": {
       "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "production",
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "movies-api:build",
